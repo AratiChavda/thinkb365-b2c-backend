@@ -4,7 +4,7 @@ import { Product } from 'src/models/product.model';
 @Injectable()
 export class ProductsService {
   async findAll() {
-    return await Product.query();
+    return await Product.query().withGraphFetched('[brand, category]');
   }
 
   async findOne(id: number) {

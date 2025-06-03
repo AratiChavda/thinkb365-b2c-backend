@@ -15,7 +15,7 @@ export class Product extends BaseModel {
   image!: string;
 
   static relationMappings = {
-    brands: {
+    brand: {
       relation: Model.BelongsToOneRelation,
       modelClass: Brand,
       join: {
@@ -23,7 +23,7 @@ export class Product extends BaseModel {
         to: 'brands.id',
       },
     },
-    categories: {
+    category: {
       relation: Model.BelongsToOneRelation,
       modelClass: Category,
       join: {

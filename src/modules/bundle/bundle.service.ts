@@ -4,7 +4,12 @@ import { Bundle } from 'src/models/bundle.model';
 @Injectable()
 export class BundleService {
   async findAll() {
-    return await Bundle.query();
+    return await Bundle.query()
+      .select('bundles.*')
+      .select(
+        Bundle.relatedQuery('bundleProducts').count().as('products_count'),
+      )
+      .withGraphFetched('[brand, offer]');
   }
 
   async findOne(id: number) {
